@@ -1,8 +1,8 @@
 class Sauce < Formula
   desc "Obsidian vault platform — mechanisms + blueprints for personal knowledge management"
   homepage "https://github.com/willfell/sauce"
-  url "https://github.com/willfell/sauce/archive/refs/tags/v0.89.0.tar.gz"
-  sha256 "da638719fa9f0625bfad025a12fea12085b3119fc11aa6cd6ba0be6ecdc01fc8"
+  url "https://github.com/willfell/sauce/archive/refs/tags/v0.89.1.tar.gz"
+  sha256 "61d307f47db499ddf823d1177a17679bea1950d5b45a8adf84989aaf7f846361"
   license "MIT"
 
   depends_on "node"
