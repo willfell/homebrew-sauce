@@ -8,7 +8,9 @@ class Sauce < Formula
   depends_on "node"
 
   def install
-    libexec.install Dir["*"]
+    # Dir["*"] skips dotfiles; .agents ships the shared skill rails (card-intake
+    # script) that the loop plugin resolves beside the coordinator.
+    libexec.install Dir["*"] + Dir[".agents"]
     system "npm", "install", "--omit=dev", "--prefix", libexec
     (bin/"sauce").write <<~SHIM
       #!/bin/bash
