@@ -17,12 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Style the formula
-        continue-on-error: true
-        run: |
-          set -euo pipefail
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew style Formula/sauce.rb
       - name: Audit and fetch the formula
         run: |
           set -euo pipefail
