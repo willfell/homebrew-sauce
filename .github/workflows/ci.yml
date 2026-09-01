@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  formula:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit and fetch the formula
+        run: |
+          set -euo pipefail
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew tap willfell/sauce "$PWD"
+          brew audit --online --skip-style willfell/sauce/sauce
+          brew fetch --force willfell/sauce/sauce
+  lint:
+    uses: willfell/lab.actions/.github/workflows/actionlint.yml@v1.7.1
+    permissions:
+      contents: read
