@@ -25,6 +25,6 @@ jobs:
           brew audit --online --skip-style willfell/sauce/sauce
           brew fetch --force willfell/sauce/sauce
   lint:
-    uses: willfell/lab.actions/.github/workflows/actionlint.yml@v1.7.1
+    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.7.1
     permissions:
       contents: read
