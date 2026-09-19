@@ -14,9 +14,22 @@ concurrency:
 
 jobs:
   formula:
-    runs-on: ubuntu-latest
+    runs-on: homebrew-sauce
     steps:
       - uses: actions/checkout@v4
+      - name: Provide build tools for native gems
+        run: |
+          set -euo pipefail
+          if ! command -v g++ >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq build-essential
+          fi
+      - name: Install Homebrew if missing
+        run: |
+          set -euo pipefail
+          if [ ! -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+            NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          fi
       - name: Audit and fetch the formula
         run: |
           set -euo pipefail
@@ -25,6 +38,8 @@ jobs:
           brew audit --online --skip-style willfell/sauce/sauce
           brew fetch --force willfell/sauce/sauce
   lint:
-    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.7.1
+    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.12.0
+    with:
+      runner: homebrew-sauce
     permissions:
       contents: read
