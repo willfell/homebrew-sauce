@@ -14,9 +14,13 @@ concurrency:
 
 jobs:
   formula:
-    runs-on: homebrew-sauce
+    runs-on: ${{ vars.CI_HOSTED_LABEL || 'ubuntu-24.04-arm' }}
+    timeout-minutes: 10
+    env:
+      HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -v
       - name: Provide build tools for native gems
         run: |
           set -euo pipefail
@@ -38,8 +42,9 @@ jobs:
           brew audit --online --skip-style willfell/sauce/sauce
           brew fetch --force willfell/sauce/sauce
   lint:
-    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.12.0
+    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.18.0
     with:
-      runner: homebrew-sauce
+      runner: ${{ vars.CI_HOSTED_LABEL || 'ubuntu-24.04-arm' }}
+      runner_policy: fleet
     permissions:
       contents: read
