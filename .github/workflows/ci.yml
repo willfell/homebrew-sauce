@@ -42,7 +42,7 @@ jobs:
           brew audit --online --skip-style willfell/sauce/sauce
           brew fetch --force willfell/sauce/sauce
   lint:
-    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.18.0
+    uses: willfell/wac.lab.actions/.github/workflows/actionlint.yml@v1.19.0
     with:
       runner: ${{ vars.CI_HOSTED_LABEL || 'ubuntu-24.04-arm' }}
       runner_policy: fleet

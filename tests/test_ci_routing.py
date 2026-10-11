@@ -13,5 +13,5 @@ class Routing(unittest.TestCase):
         self.assertEqual(re.findall(r'^      runner: (.+)$', text, re.M), [hosted])
         self.assertIn('runner_policy: fleet', text)
         self.assertIn('HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}', text)
-        self.assertEqual(set(re.findall(r'willfell/wac\.lab\.actions/[^\s@]+@([^\s]+)', text)), {'v1.18.0'})
+        self.assertEqual(set(re.findall(r'willfell/wac\.lab\.actions/[^\s@]+@([^\s]+)', text)), {'v1.19.0'})
         self.assertEqual((ROOT / '.github/actionlint.yaml').read_text(), 'self-hosted-runner:\n  labels: []\n')

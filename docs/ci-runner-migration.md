@@ -1,7 +1,7 @@
 # CI runner routing
 
 The formula and shared actionlint job use the canonical hosted ARM expression,
-ten-minute timeouts and v1.18.0 fleet policy. This public repository has zero
+ten-minute timeouts and v1.19.0 fleet policy. This public repository has zero
 private hosted billed minutes. Homebrew receives only the job token through
 `HOMEBREW_GITHUB_API_TOKEN`; no credential value is tracked. Native unittest
 guards cover the complete job inventory, timeouts and provider tag.
