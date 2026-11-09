@@ -39,6 +39,7 @@ jobs:
           set -euo pipefail
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew tap willfell/sauce "$PWD"
+          brew trust --tap willfell/sauce
           brew audit --online --skip-style willfell/sauce/sauce
           brew fetch --force willfell/sauce/sauce
   lint:
