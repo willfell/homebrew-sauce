@@ -1,8 +1,8 @@
 class Sauce < Formula
   desc "Obsidian vault platform — mechanisms + blueprints for personal knowledge management"
   homepage "https://github.com/wacwini/sauce"
-  url "https://github.com/wacwini/sauce/archive/refs/tags/v0.329.0.tar.gz"
-  sha256 "772bb59e5676f157fb22a87d563cad3bcde711dbab6a286e21ab288d4909e87c"
+  url "https://github.com/wacwini/sauce/archive/refs/tags/v0.330.0.tar.gz"
+  sha256 "cb2982e587143d9dfe8295776da3f4ba8434e585a4ea81df9b9057c11e1f4b34"
   license "MIT"
 
   depends_on "node"
